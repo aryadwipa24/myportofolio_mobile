@@ -8,9 +8,9 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP E";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Riwayat Pendidikan", Icons.folder),
-    ItemHomepage("Tambah Riwayat Pendidikan", Icons.add_circle),
-    ItemHomepage("Logout", Icons.logout),
+    ItemHomepage("Lihat Riwayat Pendidikan", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
+    ItemHomepage("Tambah Riwayat Pendidikan", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
+    ItemHomepage("Logout", Icons.logout, const Color.fromARGB(255, 239, 83, 80)),
   ];
 
   @override
@@ -115,8 +115,9 @@ class InfoCard extends StatelessWidget {
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color;
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, this.color);
 }
 
 class ItemCard extends StatelessWidget {
@@ -128,7 +129,7 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       // Menggunakan warna sekunder dari skema tema aplikasi.
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         // Aksi ketika kartu ditekan oleh pengguna.
