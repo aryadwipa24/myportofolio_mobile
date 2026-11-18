@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/widgets/project_card.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -8,8 +10,10 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP E";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Riwayat Pendidikan", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
-    ItemHomepage("Tambah Riwayat Pendidikan", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
+    ItemHomepage("Lihat Proyek", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
+    ItemHomepage("Tambah Proyek", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
+    // ItemHomepage("Lihat Riwayat Pendidikan", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
+    // ItemHomepage("Tambah Riwayat Pendidikan", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
     ItemHomepage("Logout", Icons.logout, const Color.fromARGB(255, 239, 83, 80)),
   ];
 
@@ -28,6 +32,9 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+
+      drawer: const LeftDrawer(),
+
       // Body halaman utama dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -118,51 +125,4 @@ class ItemHomepage {
   final Color color;
 
   ItemHomepage(this.name, this.icon, this.color);
-}
-
-class ItemCard extends StatelessWidget {
-  final ItemHomepage item;
-
-  const ItemCard(this.item, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      // Menggunakan warna sekunder dari skema tema aplikasi.
-      color: item.color,
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
-        // Aksi ketika kartu ditekan oleh pengguna.
-        onTap: () {
-          // Menampilkan SnackBar dengan pesan interaktif.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
-            );
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
