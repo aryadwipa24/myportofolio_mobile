@@ -188,12 +188,33 @@ class _EducationFormPageState extends State<EducationForm> {
                           builder: (context) {
                             return AlertDialog(
                               title: const Text("Riwayat pendidikan berhasil ditambahkan!"),
+                              content: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Nama Institusi Pendidikan: $_educationName'),
+                                    Text("Kategori: $_category"),
+                                    Text('Tanggal Memulai: $_educationStartedStr'),
+                                    Text('Tanggal Selesai: ${_educationEnded == null ? "Masih Berlangsung" : _educationEndedStr}'),
+                                  ],
+                                )
+                              ),
+                              
                               actions: [
                                 TextButton(
                                   child: const Text("OK"),
                                   onPressed: () {
                                     Navigator.pop(context);
                                     _formKey.currentState!.reset();
+                                    
+                                    setState(() {
+                                      _educationName = "";
+                                      _educationStarted = null;
+                                      _educationEnded = null;
+                                      _educationStartedStr = "";
+                                      _educationEndedStr = "";
+                                      _category = "Pendidikan Wajib";
+                                    });
                                   },
                                 )
                               ],
