@@ -10,10 +10,10 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP E";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Proyek", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
-    ItemHomepage("Tambah Proyek", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
-    // ItemHomepage("Lihat Riwayat Pendidikan", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
-    // ItemHomepage("Tambah Riwayat Pendidikan", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
+    // ItemHomepage("Lihat Proyek", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
+    // ItemHomepage("Tambah Proyek", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
+    ItemHomepage("Lihat Educations", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
+    ItemHomepage("Tambah Educations", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
     ItemHomepage("Logout", Icons.logout, const Color.fromARGB(255, 239, 83, 80)),
   ];
 
