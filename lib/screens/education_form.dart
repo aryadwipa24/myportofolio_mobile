@@ -47,6 +47,7 @@ class _EducationFormPageState extends State<EducationForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // === Education Name ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -71,6 +72,7 @@ class _EducationFormPageState extends State<EducationForm> {
                 ),
               ),
 
+              // === Education Start Date ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -112,6 +114,7 @@ class _EducationFormPageState extends State<EducationForm> {
                 )
               ),
 
+              // === Education End Date ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -123,6 +126,16 @@ class _EducationFormPageState extends State<EducationForm> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     errorMaxLines: 4,
+                    suffix: IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        setState(() {
+                          _educationEnded = null;
+                          _educationEndedStr = "";
+                          _endController.clear();
+                        });
+                      },
+                    ),
                   ),
                   onTap: () async {
                     DateTime? dt = await showDatePicker(
@@ -149,6 +162,7 @@ class _EducationFormPageState extends State<EducationForm> {
                 )
               ),
 
+              // === Education Category ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: DropdownButtonFormField<String>(
