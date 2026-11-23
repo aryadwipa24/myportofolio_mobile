@@ -12,8 +12,8 @@ class MyHomePage extends StatelessWidget {
   final List<ItemHomepage> items = [
     ItemHomepage("Lihat Proyek", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
     ItemHomepage("Tambah Proyek", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
-    // ItemHomepage("Lihat Riwayat Pendidikan", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
-    // ItemHomepage("Tambah Riwayat Pendidikan", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
+    ItemHomepage("Lihat Educations", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
+    ItemHomepage("Tambah Educations", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
     ItemHomepage("Logout", Icons.logout, const Color.fromARGB(255, 239, 83, 80)),
   ];
 
@@ -36,57 +36,69 @@ class MyHomePage extends StatelessWidget {
       drawer: const LeftDrawer(),
 
       // Body halaman utama dengan padding di sekelilingnya.
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Baris horizontal untuk menampilkan 3 InfoCard secara sejajar.
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InfoCard(title: 'NPM', content: npm),
-                InfoCard(title: 'Name', content: nama),
-                InfoCard(title: 'Class', content: kelas),
-              ],
-            ),
-
-            const SizedBox(height: 16.0),
-
-            // Bagian tengah: pesan sambutan dan kisi tombol menu portofolio.
-            Center(
-              child: Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Baris horizontal untuk menampilkan 3 InfoCard secara sejajar.
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 16.0),
-                    child: Text(
-                      'Selamat datang di MyPortfolio Mobile!',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                  ),
-
-                  // GridView menampilkan kartu tombol dalam tata letak kisi 3 kolom.
-                  GridView.count(
-                    primary: true,
-                    padding: const EdgeInsets.all(20),
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    crossAxisCount: 3,
-                    // shrinkWrap agar ukuran kisi menyesuaikan tinggi konten anak.
-                    shrinkWrap: true,
-                    children: items.map((ItemHomepage item) {
-                      return ItemCard(item);
-                    }).toList(),
-                  ),
+                  InfoCard(title: 'NPM', content: npm),
+                  InfoCard(title: 'Name', content: nama),
+                  InfoCard(title: 'Class', content: kelas),
                 ],
               ),
-            ),
-          ],
+
+              const SizedBox(height: 16.0),
+
+              // Bagian tengah: pesan sambutan dan kisi tombol menu portofolio.
+              Center(
+                child: Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 16.0),
+                      child: Text(
+                        'Selamat datang di MyPortfolio Mobile!',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+
+                    // GridView menampilkan kartu tombol dalam tata letak kisi 3 kolom.
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final itemWidth = (constraints.maxWidth - 50) / 2;
+                        
+                        return Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                            spacing: 10,
+                            runSpacing: 10,
+                            children: items.map((ItemHomepage item) {
+                              return SizedBox(
+                                width: itemWidth,
+                                height: itemWidth,
+                                child: ItemCard(item),
+                              );
+                            }).toList(),
+                          ),
+                        );
+                      },
+                      
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
@@ -102,8 +114,9 @@ class InfoCard extends StatelessWidget {
     return Card(
       elevation: 2.0,
       child: Container(
-        width: MediaQuery.of(context).size.width / 3.5,
+        width: MediaQuery.of(context).size.width / 3.6,
         padding: const EdgeInsets.all(16.0),
+        height: 100,
         child: Column(
           children: [
             Text(

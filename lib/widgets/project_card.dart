@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/education_form.dart';
+import 'package:myportofolio_mobile/widgets/logout.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
@@ -30,6 +32,19 @@ class ItemCard extends StatelessWidget {
                 builder: (context) => ProjectForm()
               ),
             );
+          }
+
+          if (item.name == "Tambah Educations") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EducationForm()
+              ),
+            );
+          }
+          
+          if (item.name == "Logout") {
+            showLogoutDialog(context);
           }
         },
         child: Container(
