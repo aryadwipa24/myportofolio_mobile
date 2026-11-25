@@ -39,7 +39,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
       ),
 
       drawer: const LeftDrawer(),
-      
+
       body: FutureBuilder<List<Project>>(
         future: _projectsFuture,
         builder: (context, snapshot) {
