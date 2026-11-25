@@ -23,18 +23,14 @@ class _EducationFormPageState extends State<EducationForm> {
   final List<String> _categories = [
     'Pendidikan Wajib',
     'Pendidikan Tinggi',
-    'Pendidikan Tambahan (Bimbel)'
+    'Pendidikan Tambahan (Bimbel)',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Add Education Form'
-          ),
-        ),
+        title: const Center(child: Text('Add Education Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
@@ -93,10 +89,12 @@ class _EducationFormPageState extends State<EducationForm> {
                       lastDate: DateTime(2100),
                     );
 
-                    if (dt != null) {                      
+                    if (dt != null) {
                       setState(() {
                         _educationStarted = dt;
-                        _educationStartedStr = dt.toIso8601String().split('T')[0];
+                        _educationStartedStr = dt.toIso8601String().split(
+                          'T',
+                        )[0];
                         _startController.text = _educationStartedStr;
                       });
                     }
@@ -105,13 +103,13 @@ class _EducationFormPageState extends State<EducationForm> {
                     if (_educationStarted == null) {
                       return "Tanggal mulai pendidikan tidak boleh kosong.";
                     }
-                    
+
                     if (_educationStarted!.isAfter(DateTime.now())) {
                       return "Tidak bisa memasukkan tanggal pendidikan di masa depan.";
                     }
                     return null;
                   },
-                )
+                ),
               ),
 
               // === Education End Date ===
@@ -153,13 +151,15 @@ class _EducationFormPageState extends State<EducationForm> {
                       });
                     }
                   },
-                   validator: (String? value) {
-                    if (_educationStarted != null && _educationEnded != null && _educationEnded!.isBefore(_educationStarted!)) {
-                        return "Tanggal selesai pendidikan tidak bisa mendahului tanggal mulai pendidikan.";
+                  validator: (String? value) {
+                    if (_educationStarted != null &&
+                        _educationEnded != null &&
+                        _educationEnded!.isBefore(_educationStarted!)) {
+                      return "Tanggal selesai pendidikan tidak bisa mendahului tanggal mulai pendidikan.";
                     }
                     return null;
                   },
-                )
+                ),
               ),
 
               // === Education Category ===
@@ -174,10 +174,12 @@ class _EducationFormPageState extends State<EducationForm> {
                   ),
                   initialValue: _category,
                   items: _categories
-                      .map((category) => DropdownMenuItem(
-                            value: category,
-                            child: Text(category),
-                      ))
+                      .map(
+                        (category) => DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
+                        ),
+                      )
                       .toList(),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -201,26 +203,34 @@ class _EducationFormPageState extends State<EducationForm> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text("Riwayat pendidikan berhasil ditambahkan!"),
+                              title: const Text(
+                                "Riwayat pendidikan berhasil ditambahkan!",
+                              ),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Nama Institusi Pendidikan: $_educationName'),
+                                    Text(
+                                      'Nama Institusi Pendidikan: $_educationName',
+                                    ),
                                     Text("Kategori: $_category"),
-                                    Text('Tanggal Memulai: $_educationStartedStr'),
-                                    Text('Tanggal Selesai: ${_educationEnded == null ? "Masih Berlangsung" : _educationEndedStr}'),
+                                    Text(
+                                      'Tanggal Memulai: $_educationStartedStr',
+                                    ),
+                                    Text(
+                                      'Tanggal Selesai: ${_educationEnded == null ? "Masih Berlangsung" : _educationEndedStr}',
+                                    ),
                                   ],
-                                )
+                                ),
                               ),
-                              
+
                               actions: [
                                 TextButton(
                                   child: const Text("OK"),
                                   onPressed: () {
                                     Navigator.pop(context);
                                     _formKey.currentState!.reset();
-                                    
+
                                     setState(() {
                                       _educationName = "";
                                       _educationStarted = null;
@@ -230,24 +240,24 @@ class _EducationFormPageState extends State<EducationForm> {
                                       _category = "Pendidikan Wajib";
                                     });
                                   },
-                                )
+                                ),
                               ],
                             );
-                          }
+                          },
                         );
                       }
                     },
                     child: const Text(
-                      "Save", 
+                      "Save",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
-      )
+      ),
     );
   }
 }
