@@ -21,13 +21,10 @@ void showLogoutDialog(BuildContext context) {
               Navigator.pop(dialogContext);
               SystemNavigator.pop();
             },
-            child: const Text(
-              "Logout",
-              style: TextStyle(color: Colors.red),
-            ),
-          )
+            child: const Text("Logout", style: TextStyle(color: Colors.red)),
+          ),
         ],
       );
-    }
+    },
   );
 }

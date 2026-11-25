@@ -10,11 +10,31 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP E";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Proyek", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
-    ItemHomepage("Tambah Proyek", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
-    ItemHomepage("Lihat Educations", Icons.folder, const Color.fromARGB(255, 57, 73, 171)),
-    ItemHomepage("Tambah Educations", Icons.add_circle, const Color.fromARGB(255, 105, 121, 221)),
-    ItemHomepage("Logout", Icons.logout, const Color.fromARGB(255, 239, 83, 80)),
+    ItemHomepage(
+      "Lihat Proyek",
+      Icons.folder,
+      const Color.fromARGB(255, 57, 73, 171),
+    ),
+    ItemHomepage(
+      "Tambah Proyek",
+      Icons.add_circle,
+      const Color.fromARGB(255, 105, 121, 221),
+    ),
+    ItemHomepage(
+      "Lihat Educations",
+      Icons.folder,
+      const Color.fromARGB(255, 57, 73, 171),
+    ),
+    ItemHomepage(
+      "Tambah Educations",
+      Icons.add_circle,
+      const Color.fromARGB(255, 105, 121, 221),
+    ),
+    ItemHomepage(
+      "Logout",
+      Icons.logout,
+      const Color.fromARGB(255, 239, 83, 80),
+    ),
   ];
 
   @override
@@ -25,10 +45,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'MyPortfolio',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -73,7 +90,7 @@ class MyHomePage extends StatelessWidget {
                     LayoutBuilder(
                       builder: (context, constraints) {
                         final itemWidth = (constraints.maxWidth - 50) / 2;
-                        
+
                         return Padding(
                           padding: const EdgeInsets.all(20),
                           child: Wrap(
@@ -90,7 +107,6 @@ class MyHomePage extends StatelessWidget {
                           ),
                         );
                       },
-                      
                     ),
                   ],
                 ),
@@ -98,7 +114,7 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
         ),
-      )
+      ),
     );
   }
 }
@@ -119,12 +135,9 @@ class InfoCard extends StatelessWidget {
         height: 100,
         child: Column(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8.0),
-              Text(content),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8.0),
+            Text(content),
           ],
         ),
       ),
