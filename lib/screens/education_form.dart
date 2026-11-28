@@ -235,7 +235,7 @@ class _EducationFormPageState extends State<EducationForm> {
                                       _educationEnded = null;
                                       _educationStartedStr = "";
                                       _educationEndedStr = "";
-                                      _category = "Pendidikan Wajib";
+                                      _category = "pendidikan";
                                     });
                                   },
                                 ),
