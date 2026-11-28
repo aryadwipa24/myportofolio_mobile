@@ -3,6 +3,7 @@ import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 import 'package:myportofolio_mobile/screens/education_form.dart';
 import 'package:myportofolio_mobile/screens/project_list_screen.dart';
+import 'package:myportofolio_mobile/screens/education_list_screen.dart';
 import 'package:myportofolio_mobile/widgets/auth_guard.dart';
 import 'package:myportofolio_mobile/services/auth_state.dart';
 import 'package:myportofolio_mobile/screens/login_screen.dart';
@@ -112,6 +113,17 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => EducationForm()),
+              );
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.featured_play_list),
+            title: Text("Show Education"),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => EducationListScreen()),
               );
             },
           ),

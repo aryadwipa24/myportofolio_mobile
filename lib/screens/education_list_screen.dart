@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/models/education.dart';
 import 'package:myportofolio_mobile/services/api_client.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
+import 'package:myportofolio_mobile/screens/education_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class EducationListScreen extends StatefulWidget {
@@ -102,6 +103,16 @@ class _EducationListScreenState extends State<EducationListScreen> {
                         Text(education.category),
                       ],
                     ),
+                    trailing: const Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              EducationDetailScreen(education: education),
+                        )
+                      );
+                    },
                   ),
                 );
               },
