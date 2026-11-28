@@ -18,12 +18,10 @@ class _EducationFormPageState extends State<EducationForm> {
   DateTime? _educationEnded;
   String _educationEndedStr = "";
   String _educationStartedStr = "";
-  String _category = "Pendidikan Wajib";
+  String _category = "pendidikan";
 
   final List<String> _categories = [
-    'Pendidikan Wajib',
-    'Pendidikan Tinggi',
-    'Pendidikan Tambahan (Bimbel)',
+    'pendidikan',
   ];
 
   @override
